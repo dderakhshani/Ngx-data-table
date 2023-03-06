@@ -1,0 +1,17 @@
+{
+    "name": "ngx-data-table",
+    "version": "0.35.5",
+    "peerDependencies": {
+        "@angular/common": "^13.3.0",
+        "@angular/core": "^13.3.0",
+        "@angular/material": "^13.3.9",
+        "jspdf": "^2.5.1",
+        "jspdf-autotable": "^3.5.25",
+        "xlsx": "^0.18.5",
+        "mat-table-exporter": "^10.2.4",
+        "tailwindcss": "^3.1.8"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    }
+}

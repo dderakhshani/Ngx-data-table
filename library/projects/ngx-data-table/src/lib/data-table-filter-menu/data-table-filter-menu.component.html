@@ -1,0 +1,97 @@
+<mat-menu #menu>
+    <div *ngIf="this.filter" class="p-2 flex flex-col gap-y-1">
+
+
+        <div class="menu-title">
+            {{column.title}}
+        </div>
+        <div class="py-2">
+            <mat-form-field appearance="outline" (click)="$event.stopPropagation();">
+                <mat-select [panelClass]="'mat-elevation-z10'" placeholder='' [(value)]="filter.condition" [disabled]="column.fieldType==FieldType.DropDown || column.fieldType==FieldType.CheckBox">
+                    <mat-option *ngFor="let  condition of conditionsList" [value]="condition">{{condition.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div (click)="$event.stopPropagation();">
+            <mat-form-field appearance="outline" *ngIf="column.fieldType!=FieldType.Date">
+                <input placeholder="Search {{column.title}}" [(ngModel)]="filter.value" matInput *ngIf="column.fieldType==FieldType.Text || column.fieldType==FieldType.Tel || column.fieldType==FieldType.Email ">
+                <input matInput type="number" placeholder="Search {{column.title}}" [(ngModel)]="filter.value" *ngIf="column.fieldType==FieldType.Number || column.fieldType==FieldType.Currency">
+                <input matInput type="time" step="1" placeholder="Search {{column.title}}" [(ngModel)]="filter.value" *ngIf="column.fieldType==FieldType.Time">
+
+                <mat-icon matSuffix *ngIf="column.fieldType==FieldType.Currency">attach_money</mat-icon>
+
+                <mat-checkbox *ngIf="column.fieldType==FieldType.CheckBox" [(ngModel)]="filter.value">
+
+                </mat-checkbox>
+
+                <mat-select *ngIf="column.fieldType==FieldType.DropDown" [(ngModel)]="filter.value">
+                    <mat-option *ngFor="let item of column.itemsSource?.items" [value]="item[column.itemsSource?.valueFieldName??0]">
+                        {{item[column.itemsSource?.displayFieldName ??0]}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="column.fieldType==FieldType.Date">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="filter.value">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" (click)="$event.stopPropagation();">
+            <mat-select [panelClass]="'mat-elevation-z10'" [(value)]="nextOprand" disabled="disabled">
+                <mat-option [value]="'and'">
+                    And
+                </mat-option>
+                <mat-option [value]="'or'">
+                    OR
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Search Condition 2 -->
+        <div class="py-2">
+            <mat-form-field appearance="outline" (click)="$event.stopPropagation();">
+                <mat-select [panelClass]="'mat-elevation-z10'" placeholder='' [(value)]="filter2.condition" [disabled]="column.fieldType==FieldType.DropDown || column.fieldType==FieldType.CheckBox">
+                    <mat-option *ngFor="let  condition of conditionsList" [value]="condition">{{condition.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <!-- Search Value 2 -->
+        <div (click)="$event.stopPropagation();">
+            <mat-form-field appearance="outline" *ngIf="column.fieldType!=FieldType.Date">
+                <input placeholder="Search {{column.title}}" [(ngModel)]="filter2.value" matInput *ngIf="column.fieldType==FieldType.Text || column.fieldType==FieldType.Tel || column.fieldType==FieldType.Email ">
+                <input matInput type="number" placeholder="Search {{column.title}}" [(ngModel)]="filter2.value" *ngIf="column.fieldType==FieldType.Number">
+                <input matInput type="time" placeholder="Search {{column.title}}" [(ngModel)]="filter2.value" *ngIf="column.fieldType==FieldType.Time">
+
+                <mat-checkbox *ngIf="column.fieldType==FieldType.CheckBox" [(ngModel)]="filter2.value">
+
+                </mat-checkbox>
+
+                <mat-select *ngIf="column.fieldType==FieldType.DropDown" [(ngModel)]="filter2.value">
+                    <mat-option *ngFor="let item of column.itemsSource?.items" [value]="item[column.itemsSource?.valueFieldName??0]">
+                        {{item[column.itemsSource?.displayFieldName ??0]}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="column.fieldType==FieldType.Date">
+                <input matInput [matDatepicker]="picker2" [(ngModel)]="filter2.value">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="flex gap-x-1 pt-2">
+            <button mat-stroked-button type="button" class="flex-1" (click)="clearColumn()">Remove</button>
+
+            <button mat-raised-button type="button" class="flex-1" color="primary" (click)="applyFilter()">Apply</button>
+
+
+        </div>
+    </div>
+</mat-menu>

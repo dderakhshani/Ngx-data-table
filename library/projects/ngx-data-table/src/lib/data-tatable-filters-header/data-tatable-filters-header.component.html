@@ -1,0 +1,66 @@
+<ng-container *ngIf="filters && Object.keys(filters).length>0">
+    <div class="bg-gray-300 filter-menu  flex flex-auto items-center">
+        <!-- <mat-icon svgIcon="mat_outline:filter_list" class="m-2  text-gray-100 icon-size-7"></mat-icon> -->
+        <mat-icon class="text-gray-500 icon-size-5 mx-2">
+            filter_alt
+        </mat-icon>
+        <span class="mr-2">
+            Filters:
+        </span>
+        <div *ngFor="let key of Object.keys(filters)" class="flex items-center justify-center pl-3 m-1.5 rounded-full leading-9 bg-gray-500 text-gray-100 dark:text-gray-300 dark:bg-gray-700">
+            <ng-container *ngFor="let filter of getFilters(key)">
+                <span class="text-md font-medium whitespace-nowrap" class="mr-1">
+                    {{filter.column.title}}
+                    {{filter.condition.symbol}}&nbsp;
+
+                    <ng-container *ngIf="filter.column.fieldType==FieldTypes.DropDown;else nonDropDown">
+                        "{{getDropDownValue(filter.column,filter.value)}}"
+                    </ng-container>
+
+                    <ng-template #nonDropDown>
+                        <ng-container *ngIf="filter.column.fieldType==FieldTypes.Date">
+                            "{{filter.value | date}}"
+                        </ng-container>
+
+                        <ng-container *ngIf="filter.column.fieldType!=FieldTypes.Date">
+                            "{{filter.value}}"
+                        </ng-container>
+                    </ng-template>
+                    &nbsp;{{key}} &nbsp;
+
+
+                    <!-- <ng-container *ngIf="filters[key].value2 && filters[key].condition2">
+            &nbsp;{{and}} &nbsp;
+            {{filters[key].condition2!.symbol}}&nbsp;
+
+            <ng-container *ngIf="filters[key].column.fieldType==FieldTypes.DropDown;else nonDropDown2">
+                "{{getDropDownValue(filters[key].column,filters[key].value2)}}"
+            </ng-container>
+            <ng-template #nonDropDown2>
+                <ng-container *ngIf="filters[key].column.fieldType==FieldTypes.Date">
+                    "{{filters[key].value2 | date}}"
+                </ng-container>
+                <ng-container *ngIf="filters[key].column.fieldType!=FieldTypes.Date">
+                    "{{filters[key].value2}}"
+                </ng-container>
+            </ng-template>
+
+        </ng-container> -->
+                </span>
+
+
+
+            </ng-container>
+            <button mat-icon-button mat-filter-item (click)="removeFilter(key)">
+                <mat-icon class="text-red-200 icon-size-5">
+                    close
+                </mat-icon>
+            </button>
+        </div>
+
+        <button mat-flat-button mat-filter-item *ngIf="Object.keys(filters).length>2" (click)="removeAll()" class="bg-amber-500">
+
+            <span class="text-gray-100">Delete All</span>
+        </button>
+    </div>
+</ng-container>

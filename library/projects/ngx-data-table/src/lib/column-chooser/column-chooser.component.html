@@ -1,0 +1,30 @@
+<div mat-dialog-title>
+    <h2>Create New Display Preset</h2>
+</div>
+
+<div mat-dialog-content>
+
+    <!-- //TODO: the label of the text box is off -->
+
+    <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title" required>
+    </mat-form-field>
+
+    <!-- <ng-container *ngFor="let item of columnList.columns; let i = index;">
+        <div class="px-3 py-2">
+            <mat-slide-toggle checked="true" class="me-2" (click)="$event.stopPropagation()"></mat-slide-toggle>
+            <label>{{ item.title }}</label>
+        </div>
+        <mat-divider></mat-divider>
+    </ng-container> -->
+</div>
+
+<!-- <div mat-dialog-actions class="flex justify-center">
+    <button mat-button (click)="onDismiss()">Cancel</button>
+    <button mat-button color="primary" (click)="onConfirm()">OK</button>
+</div> -->
+<mat-dialog-actions class="flex">
+    <button mat-button mat-dialog-close (click)="onDismiss()" class="ml-auto">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onConfirm()" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

@@ -1,0 +1,301 @@
+.card {
+    border: 1px solid #e4e7ec;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px #00000031;
+    overflow: hidden;
+}
+
+.toolbar {
+    .mat-button-toggle-group {
+        height: 35px;
+        align-items: center;
+
+        button {
+            height: unset;
+        }
+    }
+
+    .mat-button-toggle-label-content {
+        padding: 0 8px !important;
+    }
+
+    .mat-stroked-button {
+        padding: 0 10px;
+    }
+
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(196, 196, 196, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.group-area {
+    min-height: 48px;
+    background: rgb(236, 236, 236);
+
+    .title {
+        color: #888888;
+    }
+}
+
+
+
+table {
+    // border: 1px solid #e4e7ec;
+    border-radius: 12px;
+    // box-shadow: 1px 1px 8px #00000017;
+    border-spacing: 0;
+    border-collapse: separate;
+    background-color: #eff2f7;
+}
+
+.mat-header-row {
+    background: #ebebeb;
+    position: sticky;
+    z-index: 1000;
+
+    box-shadow: 0px 3px 5px rgba(47, 47, 47, 0.3);
+}
+
+.header.mat-header-row {
+    height: 40px;
+
+    th {
+        font-weight: bold;
+        background: #888888;
+        color: #fff;
+    }
+}
+
+.footer {
+    background: rgb(236, 236, 236);
+}
+
+:host ::ng-deep .mat-sort-header-arrow {
+    color: #fff !important;
+}
+
+:host ::ng-deep .mat-tab-label {
+    min-width: 40px !important;
+}
+
+:host ::ng-deep .mat-menu-content {
+    padding: 0 !important;
+}
+
+.mat-row {
+    height: 40px;
+
+
+    &:first-of-type {}
+}
+
+.mat-row:nth-child(even) {}
+
+.mat-row:nth-child(odd) {
+    background-color: #fafbfc;
+    border-bottom: 1px solid #dddfe4;
+}
+
+.mat-row.selected {
+    background-color: rgb(199 216 227) !important;
+    transform: scale(1) !important;
+    box-shadow: 1px 1px 5px #00000034 !important;
+}
+
+.mat-row:hover {
+    background-color: rgb(219 229 235) !important;
+}
+
+.mat-row.group-row {
+    background-color: rgb(203, 203, 203) !important;
+    cursor: pointer;
+    width: 100% !important;
+}
+
+
+.mat-row,
+.mat-header-row {
+    display: table-row;
+}
+
+.copyPasteAction {
+    width: 130px;
+}
+
+
+td.mat-cell {
+    padding: 0.5rem !important;
+    border: none;
+    border-bottom: 1px solid #dddfe4;
+}
+
+
+td.mat-cell:first-of-type {
+    padding-left: 24px !important;
+}
+
+.mat-cell.text-align-left,
+.mat-header-cell.text-align-left {
+    text-align: left !important;
+}
+
+.mat-cell.text-align-right,
+.mat-header-cell.text-align-right {
+    text-align: right !important;
+}
+
+.mat-cell.text-align-center,
+.mat-header-cell.text-align-center {
+    text-align: center !important;
+}
+
+
+:host ::ng-deep .mat-form-field-underline {
+    position: unset !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+
+:host ::ng-deep .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+:host ::ng-deep .cdk-drag-placeholder {
+    opacity: 0;
+}
+
+:host ::ng-deep .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.finish-button {
+    margin-right: 0.5rem !important;
+}
+
+.mat-menu-item {
+    min-width: 200px;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.row-card-table {
+    padding: 0 .5rem;
+
+    table {
+        border-spacing: 0 10px !important;
+        border-collapse: separate !important;
+    }
+
+    .grid-row {
+        padding: 20px;
+        transition: all 0.3s;
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        height: 110px;
+    }
+
+
+    thead tr th,
+    thead tr td,
+    tbody tr th,
+    tbody tr td {
+        vertical-align: middle;
+        border: none;
+    }
+
+    thead tr {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+    }
+
+    thead tr th {
+        border-right: 1px solid #a3a3a3 !important;
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
+        color: #FFF;
+    }
+
+    thead tr th:nth-child(1) {
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    thead tr th:nth-last-child(1) {
+
+        border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    // thead tr th:nth-last-child(1),
+    // thead tr td:nth-last-child(1),
+    // tbody tr th:nth-last-child(1),
+    // tbody tr td:nth-last-child(1) {
+    //     text-align: center;
+    // }
+
+    tbody tr {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+    }
+
+    tbody tr td {
+        padding: 25px;
+    }
+
+    tbody tr td:nth-child(1) {
+
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    tbody tr td:nth-last-child(1) {
+        border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    tbody tr.group-row td {
+        border-radius: 0.5rem;
+    }
+
+}
+
+.hide-mobile {
+    display: inherit;
+}
+
+@media (max-width: 767px) {
+    .hide-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .rows-table,
+    .row-card-table {
+
+        .mat-cell,
+        .mat-header-cell {
+            word-wrap: initial;
+            display: table-cell;
+            padding: 0px 10px;
+            line-break: unset;
+            // width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+    }
+}
